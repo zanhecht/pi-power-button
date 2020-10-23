@@ -11,11 +11,11 @@ then
   echo "uhubctl detected at $var!"
   echo "=> Installing button listener..."
   
-  sudo cp listen-for-shutdown.py /usr/local/bin/
+  sudo cp listen-for-button.py /usr/local/bin/
   sudo chmod +x /usr/local/bin/listen-for-button.py
   
   echo "=> Starting button listener..."
-  sudo cp listen-for-shutdown.sh /etc/init.d/
+  sudo cp listen-for-button.sh /etc/init.d/
   sudo chmod +x /etc/init.d/listen-for-button.sh
   
   sudo update-rc.d listen-for-button.sh defaults

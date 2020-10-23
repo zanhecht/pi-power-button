@@ -1,18 +1,40 @@
-#! /bin/sh
+#! /bin/bash
+
+var=$(command -v uhubctl)
 
 set -e
 
 cd "$(dirname "$0")/.."
 
-echo "=> Installing button listener...\n"
-sudo cp listen-for-shutdown.py /usr/local/bin/
-sudo chmod +x /usr/local/bin/listen-for-button.py
-
-echo "=> Starting button listener...\n"
-sudo cp listen-for-shutdown.sh /etc/init.d/
-sudo chmod +x /etc/init.d/listen-for-button.sh
-
-sudo update-rc.d listen-for-button.sh defaults
-sudo /etc/init.d/listen-for-button.sh start
-
-echo "Button listener installed.\n"
+if [[ "$var" ]]
+then
+  echo "uhubctl detected at $var!"
+  echo "=> Installing button listener..."
+  
+  sudo cp listen-for-shutdown.py /usr/local/bin/
+  sudo chmod +x /usr/local/bin/listen-for-button.py
+  
+  echo "=> Starting button listener..."
+  sudo cp listen-for-shutdown.sh /etc/init.d/
+  sudo chmod +x /etc/init.d/listen-for-button.sh
+  
+  sudo update-rc.d listen-for-button.sh defaults
+  sudo /etc/init.d/listen-for-button.sh start
+  
+  echo "Button listener installed."
+else
+  echo "uhubctl not found!"
+  echo ""
+  if [ -d ~/.octoprint ]
+  then
+    echo "You install the USBControl plugin in OctoPrint by going to \"Settings\","
+    echo "\"Plugin Manager\", \"Get More...\", entering the URL:"
+    echo "https://github.com/OutsourcedGuru/OctoPrint-USBControl/archive/master.zip"
+    echo "and clicking \"Install\". After rebooting, go to the \"USBControl\" section"
+    echo "in OctoPrint's ettings and follow the instructions to finish setting it up."
+    echo ""
+    echo "You can also install just uhubctl using \"sudo apt install uhubctl\""
+  else
+    echo "Please install uhubctl using \"sudo apt install uhubctl\""
+  fi
+fi

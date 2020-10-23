@@ -23,7 +23,7 @@ then
   
   echo "Button listener installed."
   echo
-  echo "Connect a momentary button between GPIO Pin 3 and ground."
+  echo "Connect a momentary button between Pin 5 (GPIO 3/SCL) and ground."
   echo "To toggle USB power on and off, tap the button."
   echo "To shut down the Raspberry Pi, hold the button for at least three seconds and"
   echo "release. Press the button again to restart the Raspberry Pi."

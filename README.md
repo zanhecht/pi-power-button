@@ -1,18 +1,26 @@
 # pi-power-button
 
-Scripts used in our official [Raspberry Pi power button guide](https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi).
+Based on [Raspberry Pi power button guide](https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi).
+
+Includes two options:
+1. A shutdown button, that turns the Raspberry Pi off and on
+1. A multipurpose button. Short presses turn USB power off and on, long presses (3+ seconds) turn the Raspberry Pi off and on.
 
 ## Installation
 
 1. [Connect to your Raspberry Pi via SSH](https://howchoo.com/g/mgi3mdnlnjq/how-to-log-in-to-a-raspberry-pi-via-ssh)
-1. Clone this repo: `git clone https://github.com/Howchoo/pi-power-button.git`
-1. Run the setup script: `./pi-power-button/script/install`
+1. Clone this repo: `git clone https://github.com/zanhecht/pi-power-button.git`
+1. Run one of the two setup scripts:
+    * `./pi-power-button/script/install-shutdown` for the shutdown button.
+    * `./pi-power-button/script/install-button` for the multipurpose button. You will be given instructions by the script to install [uhubctl](https://github.com/mvp/uhubctl) or [OctoPrint-USBControl](https://github.com/OutsourcedGuru/OctoPrint-USBControl) if necessary. 
 
 ## Uninstallation
 
 If you need to uninstall the power button script in order to use GPIO3 for another project or something:
 
-1. Run the uninstall script: `./pi-power-button/script/uninstall`
+1. Run the appropriate uninstall script:
+    * `./pi-power-button/script/uninstall-shutdown`  for the shutdown button.
+    * `./pi-power-button/script/uninstall-button` for the multipurpose button.
 
 ## Hardware
 
